@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import Footer from '../Components/Footer'
 import Header from '../Components/Header'
 import ListPost from '../Components/ListPost'
+import ListSliders from '../Components/ListSliders'
 import TopPost from '../Components/TopPost'
 
 const DataPost = () => {
@@ -23,7 +24,7 @@ const DataPost = () => {
         image: item.image,
         imagetop: item.imageTop,
       }))
-      setMainPosts(data.slice(16, 40))
+      setMainPosts(data.slice(16, 25))
       setTopMainPosts(data.slice(4, 5))
       setCatePosts(data.slice(6, 9))
       setMorePosts(data.slice(9, 16))
@@ -31,10 +32,16 @@ const DataPost = () => {
     })
   }, [])
   return (
-    <Box sx={{ backgroundColor: 'rgb(247, 247, 247)' }}>
+    <Box m={0} p={0}>
       <Header />
 
       <TopPost toppost={mainTopPosts} catepost={mainCatePosts} mainmore={MorePosts} />
+
+      <ListPost maincate={mainPosts} />
+
+      <Box maxWidth="900px" m="auto">
+        <ListSliders posts={postSlider} />
+      </Box>
 
       <ListPost maincate={mainPosts} />
       <Footer sx={{ backgroundColor: '#fsfdsaf' }} />
